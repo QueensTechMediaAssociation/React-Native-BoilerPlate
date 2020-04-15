@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button} from 'react-native'
 import { styles } from '../styles/styles.js';
 
+
+
+
+
 export default class SignUp extends React.Component {
     render() {
         return(

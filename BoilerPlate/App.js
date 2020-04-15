@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import {Component} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -10,6 +11,8 @@ import LoginScreen from './src/screens/login';
 import SignUp from './src/screens/signup';
 import Home from './src/screens/home';
 
+import auth from '@react-native-firebase/auth';
+
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -17,6 +20,10 @@ const MaterialBottomTabs = createBottomTabNavigator();
 
 
 export default class App extends Component {
+ 
+
+  
+
 
   createHomeStack = () =>
   <Stack.Navigator>
