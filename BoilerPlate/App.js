@@ -20,8 +20,10 @@ const MaterialBottomTabs = createBottomTabNavigator();
 
 
 export default class App extends Component {
- 
 
+
+
+  
   
 
 
@@ -31,7 +33,7 @@ export default class App extends Component {
       name="LoginScreen"
       component={LoginScreen}
       options={{
-        title: "Login Screen",
+        title: "Login",
         headerStyle: { backgroundColor: "#E9446A" },
         headerTintColor: "white"
       }}
@@ -68,6 +70,7 @@ createDrawer = () =>
 
 
   render(){
+    
     return(
       <NavigationContainer>
         {this.createHomeStack()}

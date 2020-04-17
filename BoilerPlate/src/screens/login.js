@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button} from 'react-native';
 import { styles } from '../styles/styles.js';
 import auth from '@react-native-firebase/auth';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 
@@ -34,7 +36,7 @@ function authenticate(email, pwd){
 
 
 
-export default function LoginScreen()  {
+export default function LoginScreen({ navigation })  {
     const [email, setEmail] = React.useState('');
     const [pwd, setPWD] = React.useState('');
     
@@ -49,7 +51,7 @@ export default function LoginScreen()  {
                     <Text style={styles.inputTitle}>Email Address</Text>
                     <TextInput style={styles.inputBox} 
                     autoCapitalize="none" 
-                    onChangeText={(val) => setEmail(val)}> </TextInput>
+                    onChangeText={(val) => setEmail(val)}></TextInput>
                     </View>
 
                     <View style= {{ marginTop:32}}> 
@@ -57,7 +59,7 @@ export default function LoginScreen()  {
                     <TextInput style={styles.inputBox}
                     secureTextEntry={true}
                     autoCapitalize="none" 
-                    onChangeText={(val) => setPWD(val)}> </TextInput>
+                    onChangeText={(val) => setPWD(val)}></TextInput>
                     <Text>{email} {pwd} </Text>
                     </View>
                 
@@ -66,7 +68,7 @@ export default function LoginScreen()  {
                 <TouchableOpacity style={styles.button} onPress={() => authenticate(email, pwd)}> 
                     <Text style={{color:"#FFF", fontWeight: "500"}}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}> 
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}> 
                     <Text style={styles.signUpButton}>New to the boiler plate? <Text style={{color:'#E9446A'}}>SignUp</Text></Text>
                 </TouchableOpacity>
 
