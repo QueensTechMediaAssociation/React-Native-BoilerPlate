@@ -1,6 +1,6 @@
 import React from 'react';
 import { withFormik } from 'formik';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button} from 'react-native';
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image} from 'react-native';
 import * as yup from 'yup';
 import { styles } from '../../styles/styles';
 
@@ -11,7 +11,8 @@ const AuthForm = (props) => {
         function displayLogin(){
           return(
           <View style={styles.container}>
-            <Text style={styles.greeting}> {'Welcome to the QTMA React Native Boiler Kit'}</Text>
+            <Text style={styles.greeting}>{'Welcome to the QTMA React Native Boiler Kit'}</Text>
+            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
           <View style={styles.form}>
           <Text style={styles.inputTitle}>Email Address</Text>
             <TextInput style={styles.inputBox} 
@@ -39,31 +40,35 @@ const AuthForm = (props) => {
         function displayRegister(){
           return(
           <View style={styles.container}>
-            <Text style={styles.greeting}> {'Welcome to the QTMA React Native Boiler Kit'}</Text>
+            <Text style={styles.greeting}>{'Welcome to the QTMA React Native Boiler Kit'}</Text>
+            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
           <View style={styles.form}>
-          <View style={styles.input}>
+          
                  <Text style={styles.inputTitle}>Name</Text>
                  <TextInput style={styles.inputBox}
                  onChangeText={text => props.setFieldValue('displayName', text)}> </TextInput>
-          </View>
+          
+          
           <Text style={styles.inputTitle}>Email Address</Text>
             <TextInput style={styles.inputBox} 
             autoCapitalize="none" 
             onChangeText={text => props.setFieldValue('email', text)}></TextInput>
-
+          
+          
           <Text style={styles.inputTitle}>Password</Text>
           <TextInput style={styles.inputBox}
           secureTextEntry={true}
           autoCapitalize="none" 
           onChangeText={text => props.setFieldValue('password', text)}>
           </TextInput>
+          
 
-          <View style={styles.input}>
-                 <Text style={styles.inputTitle}>Re-Enter Password</Text>
-                 <TextInput style={styles.inputBox} autoCapitalize="none"
-                    onChangeText={text => props.setFieldValue('rePWD', text)}
-                    secureTextEntry={true}></TextInput>
-          </View>
+          
+          <Text style={styles.inputTitle}>Re-Enter Password</Text>
+          <TextInput style={styles.inputBox} autoCapitalize="none"
+            onChangeText={text => props.setFieldValue('rePWD', text)}
+            secureTextEntry={true}></TextInput>
+          
 
           <TouchableOpacity style={styles.button} onPress={() => props.handleSubmit()}> 
             <Text style={{color:"#FFF", fontWeight: "500"}}>Sign Up</Text>
@@ -81,7 +86,7 @@ if(props.authMode=='signup'){
     displayRegister()
   )
 }
-return(
+else return(
   displayLogin()
 )
 

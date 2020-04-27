@@ -6,59 +6,52 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  title: {
-    fontSize: 36,
-    marginBottom: 16
-  },
   container: {
-    flex: 1,
+    
 },
 greeting:{
-    marginTop: 40,
-    marginBottom: 70,
-    fontSize: 35,
+    marginTop: 80,
+    fontSize: 30,
     fontWeight: "500",
-    textAlign: "center"
+    textAlign: "center",
+    marginBottom: 30
+},
+logo: {
+    marginHorizontal: 100,
+    marginBottom: 30
+
 },
 
-
-errorMessage:{
-    height: 72,
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: 30
-},
 form: {
-    marginBottom: 48,
     marginHorizontal: 30
 },
 inputTitle: {
     color: "#8A8F9E",
     fontSize: 10,
-    textTransform: "uppercase"
+    textTransform: "uppercase",
 },
 inputBox:{
     borderBottomColor: "#8A8F9E",
     borderBottomWidth: StyleSheet.hairlineWidth,
     height: 40,
     fontSize: 15,
-    color: "#161F3D"
-},
-input:{
+    color: "#161F3D",
     marginBottom: 15
 },
 
+
 button:{
-    marginHorizontal: 30,
-    marginBottom: 10,
+    marginHorizontal: 40,
+    marginBottom: 15,
+    marginTop: 15,
     backgroundColor: "#E9446A",
     borderRadius: 4,
-    height: 52,
+    height: 42,
     alignItems: "center",
     justifyContent: "center"
 },
 signUpButton:{
-    marginHorizontal: 90
+    marginHorizontal: 50
 }
 
 
