@@ -1,81 +1,78 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import {Component} from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import Settings from './src/screens/drawer/settings';
-import LoginScreen from './src/screens/login';
-import SignUp from './src/screens/signup';
-import Home from './src/screens/home';
-
+import React, { useState, useEffect } from 'react';
+import { View, Text } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 
-const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
-const MaterialBottomTabs = createBottomTabNavigator();
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
-export default class App extends Component {
+import LoginScreen from './src/screens/Authentication/loginScreen';
 
 
+import { NavigationContainer } from '@react-navigation/native';
 
-  
-  
+import {MainStackNavigator} from './src/navigators/MainStackNavigator'
+import {AuthStackNavigator} from './src/navigators/AuthStackNavigator';
 
-
-  createHomeStack = () =>
-  <Stack.Navigator>
-    <Stack.Screen
-      name="LoginScreen"
-      component={LoginScreen}
-      options={{
-        title: "Login",
-        headerStyle: { backgroundColor: "#E9446A" },
-        headerTintColor: "white"
-      }}
-    />
-    <Stack.Screen
-      name="SignUp"
-      component={SignUp}
-      options={{
-        title: "SignUp",
-        headerStyle: { backgroundColor: "#E9446A" },
-        headerTintColor: "white"
-      }}
-    />
-    <Stack.Screen
-      name="Home"
-      children={this.createDrawer}
-      options={{
-        title: "Home",
-        headerStyle: { backgroundColor: "black" },
-        headerTintColor: "white"
-      }}
-    />
-    
-    
-  </Stack.Navigator>
+import LoadingScreen from './src/screens/loading';
 
 
 
-createDrawer = () =>
-<Drawer.Navigator>
-  <Drawer.Screen name="Home" component={Home} />
-  <Drawer.Screen name="Settings" component={Settings} />
-</Drawer.Navigator>
+
+const RootStack = createStackNavigator();
 
 
-  render(){
-    
-    return(
-      <NavigationContainer>
-        {this.createHomeStack()}
+export default function App() {
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
 
-      </NavigationContainer>
-    )
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
   }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  function renderScreens(){
+    if (initializing) return (
+      <RootStack.Screen name="LoadingScreen" component={LoadingScreen}/>
+  );
+
+    if (!user){
+      return (
+          <RootStack.Screen name="Auth" component={AuthStackNavigator}/>
+      );
+    }
+     return (
+      <RootStack.Screen name="Home" component={MainStackNavigator}/>
+  );
+  }
+
+  return(
+    <NavigationContainer>
+      <RootStack.Navigator screenOptions={{
+              headerShown: false,
+              animationEnabled: false,
+            }}>
+        {renderScreens()}
+      </RootStack.Navigator>
+    </NavigationContainer>
+  )
+
+
+
+
+  
+
+  
+    
+  
+
+ 
 }
