@@ -1,16 +1,22 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/home'
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const MainStack = createStackNavigator();
+import HomeScreen from '../screens/Drawer/home'
+import LoadingScreen from '../screens/Drawer/loading'
+import SettingsScreen from '../screens/Drawer/settings'
+
+
+const Drawer = createDrawerNavigator();
 
 export function MainStackNavigator() {
+
+
   return (
-    <MainStack.Navigator screenOptions={{
-      headerShown: false,
-      animationEnabled: false,
-    }}>
-      <MainStack.Screen name={'HomeScreen'} component={HomeScreen}/>
-    </MainStack.Navigator>
+    <Drawer.Navigator>
+      <Drawer.Screen name={'Home'} component={HomeScreen}/>
+      <Drawer.Screen name={'Loading'} component={LoadingScreen}/>
+      <Drawer.Screen name={'Settings'} component={SettingsScreen}/>
+    </Drawer.Navigator>
   );
 }

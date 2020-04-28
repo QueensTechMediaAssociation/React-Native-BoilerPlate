@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import { login, signup, subscribeToAuthChanges } from '../../firebase/functions';
-import HomeScreen from '../home';
-class LoginScreen extends Component {
+
+
+class AuthScreen extends Component {
 
   state = {
     authMode: 'login'
@@ -37,4 +38,4 @@ class LoginScreen extends Component {
 }
 
 
-export default LoginScreen;
+export default AuthScreen;

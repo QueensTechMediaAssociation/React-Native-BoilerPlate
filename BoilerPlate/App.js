@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-import LoginScreen from './src/screens/Authentication/loginScreen';
+import LoginScreen from './src/screens/Authentication/AuthScreen';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,7 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {MainStackNavigator} from './src/navigators/MainStackNavigator'
 import {AuthStackNavigator} from './src/navigators/AuthStackNavigator';
 
-import LoadingScreen from './src/screens/loading';
+import LoadingScreen from './src/screens/Drawer/loading';
 
 
 
@@ -24,6 +24,7 @@ const RootStack = createStackNavigator();
 
 
 export default function App() {
+  StatusBar.setBarStyle('light-content', false);
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -55,7 +56,9 @@ export default function App() {
   }
 
   return(
+    
     <NavigationContainer>
+      
       <RootStack.Navigator screenOptions={{
               headerShown: false,
               animationEnabled: false,
@@ -65,14 +68,4 @@ export default function App() {
     </NavigationContainer>
   )
 
-
-
-
-  
-
-  
-    
-  
-
- 
 }

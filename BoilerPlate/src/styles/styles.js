@@ -9,6 +9,15 @@ export const styles = StyleSheet.create({
   container: {
     
 },
+activity:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 350
+},
+scroll:{
+    backgroundColor: 'pink'
+},
+
 greeting:{
     marginTop: 80,
     fontSize: 30,

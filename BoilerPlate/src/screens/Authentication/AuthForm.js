@@ -1,8 +1,11 @@
 import React from 'react';
 import { withFormik } from 'formik';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image} from 'react-native';
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image, SafeAreaView, ScrollView} from 'react-native';
 import * as yup from 'yup';
-import { styles } from '../../styles/styles';
+import { styles } from '../../../styles/styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 
 const AuthForm = (props) => {
@@ -10,9 +13,11 @@ const AuthForm = (props) => {
 
         function displayLogin(){
           return(
+            
           <View style={styles.container}>
+            
             <Text style={styles.greeting}>{'Welcome to the QTMA React Native Boiler Kit'}</Text>
-            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
+            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>  
           <View style={styles.form}>
           <Text style={styles.inputTitle}>Email Address</Text>
             <TextInput style={styles.inputBox} 
@@ -39,10 +44,12 @@ const AuthForm = (props) => {
 
         function displayRegister(){
           return(
-          <View style={styles.container}>
+
+              <ScrollView backgroundColor="pink">
+          
             <Text style={styles.greeting}>{'Welcome to the QTMA React Native Boiler Kit'}</Text>
             <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
-          <View style={styles.form}>
+          
           
                  <Text style={styles.inputTitle}>Name</Text>
                  <TextInput style={styles.inputBox}
@@ -76,8 +83,10 @@ const AuthForm = (props) => {
           <TouchableOpacity onPress={() => props.switchAuthMode()}> 
             <Text style={styles.signUpButton}>Already Have an Account? <Text style={{color:'#E9446A'}}>Login</Text></Text>
           </TouchableOpacity>
-          </View>
-          </View>
+         
+          
+          </ScrollView>
+          
           );
 
 }
@@ -104,7 +113,7 @@ export default withFormik({
       email: yup.string().email().required(),
       password: yup.string().min(10).required(),
       displayName: props.authMode === 'signup' ?
-        yup.string().min(5).required() : null
+        yup.string().min(4).required() : null
     }),
     handleSubmit: (values, { props }) => {
       props.authMode === 'login' ? props.login(values) : props.signup(values)
