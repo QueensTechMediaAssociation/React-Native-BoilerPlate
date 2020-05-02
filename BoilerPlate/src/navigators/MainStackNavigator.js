@@ -13,7 +13,10 @@ export function MainStackNavigator() {
 
 
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{
+      headerShown: false,
+      animationEnabled: false,
+    }}>
       <Drawer.Screen name={'Home'} component={HomeScreen}/>
       <Drawer.Screen name={'Loading'} component={LoadingScreen}/>
       <Drawer.Screen name={'Settings'} component={SettingsScreen}/>

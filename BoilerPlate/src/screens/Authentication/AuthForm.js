@@ -2,17 +2,15 @@ import React from 'react';
 import { withFormik } from 'formik';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Button, Image, SafeAreaView, ScrollView} from 'react-native';
 import * as yup from 'yup';
-import { styles } from '../../../styles/styles';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native-gesture-handler';
+import { styles } from '../../styles/styles';
 
 
 
 const AuthForm = (props) => {
 
 
-        function displayLogin(){
-          return(
+        displayLogin = (
+          
             
           <View style={styles.container}>
             
@@ -23,6 +21,7 @@ const AuthForm = (props) => {
             <TextInput style={styles.inputBox} 
             autoCapitalize="none" 
             onChangeText={text => props.setFieldValue('email', text)}></TextInput>
+            <Text>{props.errors.email}</Text>
 
           <Text style={styles.inputTitle}>Password</Text>
           <TextInput style={styles.inputBox}
@@ -39,18 +38,17 @@ const AuthForm = (props) => {
           </TouchableOpacity>
           </View>
           </View>
-          );
-        }
+        );
 
-        function displayRegister(){
-          return(
+        displayRegister = (
+          
 
-              <ScrollView backgroundColor="pink">
+            <View>
           
             <Text style={styles.greeting}>{'Welcome to the QTMA React Native Boiler Kit'}</Text>
             <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
           
-          
+          <View style={styles.form}>
                  <Text style={styles.inputTitle}>Name</Text>
                  <TextInput style={styles.inputBox}
                  onChangeText={text => props.setFieldValue('displayName', text)}> </TextInput>
@@ -75,6 +73,7 @@ const AuthForm = (props) => {
           <TextInput style={styles.inputBox} autoCapitalize="none"
             onChangeText={text => props.setFieldValue('rePWD', text)}
             secureTextEntry={true}></TextInput>
+            </View>
           
 
           <TouchableOpacity style={styles.button} onPress={() => props.handleSubmit()}> 
@@ -84,20 +83,18 @@ const AuthForm = (props) => {
             <Text style={styles.signUpButton}>Already Have an Account? <Text style={{color:'#E9446A'}}>Login</Text></Text>
           </TouchableOpacity>
          
+          </View>
           
-          </ScrollView>
           
           );
 
-}
-if(props.authMode=='signup'){
-  return(
-    displayRegister()
-  )
-}
-else return(
-  displayLogin()
-)
+          return(
+            <ScrollView>
+                {props.authMode === 'signup' ? displayRegister : displayLogin}
+            </ScrollView>
+            
+            );
+          
 
   }
     
@@ -109,15 +106,32 @@ else return(
 
 export default withFormik({
     mapPropsToValues: () => ({ email: '', password: '', rePWD: '', displayName: '' }),
-    validationSchema: (props) => yup.object().shape({
-      email: yup.string().email().required(),
-      password: yup.string().min(10).required(),
-      displayName: props.authMode === 'signup' ?
-        yup.string().min(4).required() : null
-    }),
+    validate: (values, props) => {
+      const errors = {};
+      if (!values.email) {
+        errors.email = 'Email Required';
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+      }
+
+      if(!values.password){
+        errors.password = "Password Required"
+      } else if (values.password.length < 8) {
+        errors.password = 'Password must be longer than 8 characters';
+      }
+      return errors;
+    },
+    
     handleSubmit: (values, { props }) => {
-      props.authMode === 'login' ? props.login(values) : props.signup(values)
+      props.authMode === 'login' ? props.login(values) : props.signup(values);
       
     },
   })(AuthForm);
   
+
+  // validationSchema: (props) => yup.object().shape({
+  //   email: yup.string().email().required(),
+  //   password: yup.string().min(10).required(),
+  //   displayName: props.authMode === 'signup' ?
+  //     yup.string().min(4).required() : null
+  // }),

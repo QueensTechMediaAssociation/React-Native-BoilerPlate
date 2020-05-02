@@ -8,7 +8,8 @@ class SettingsScreen extends Component {
 
     render(){
         return(
-            <View>
+            <View style={styles.centeredContainer}>
+                <Text>HEllo</Text>
                 <Button title="Sign Out" onPress={() => auth().signOut() }></Button>
                 
             </View>

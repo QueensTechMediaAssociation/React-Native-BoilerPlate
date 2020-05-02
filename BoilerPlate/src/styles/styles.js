@@ -61,6 +61,10 @@ button:{
 },
 signUpButton:{
     marginHorizontal: 50
+},
+centeredContainer:{
+    marginHorizontal:40,
+    marginVertical: 90
 }
 
 
