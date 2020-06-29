@@ -40,4 +40,8 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginTop: 30,
   },
+  image: {
+    width: 150,
+    height: 293,
+  },
 });
