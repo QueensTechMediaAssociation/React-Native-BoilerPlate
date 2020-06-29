@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import { View, Text, Button, ActivityIndicator } from 'react-native';
-import { styles } from '../../styles/styles.js';
-import signout from '../../firebase/functions'
+import React, {Component} from 'react';
+import {View, Text, ActivityIndicator} from 'react-native';
+import {styles} from '../../styles/styles.js';
+import signout from '../../firebase/functions';
 import auth from '@react-native-firebase/auth';
+import {Avatar, Button, Title, Paragraph, Card} from 'react-native-paper';
 
 class SettingsScreen extends Component {
-
-    render(){
-        return(
-            <View style={styles.centeredContainer}>
-                <Text>HEllo</Text>
-                <Button title="Sign Out" onPress={() => auth().signOut() }></Button>
-                
-            </View>
-        );
-    }
-
+  render() {
+    return (
+      <View style={styles.form}>
+        <Button
+          style={styles.authButton}
+          mode="outlined"
+          onPress={() => auth().signOut()}
+          color="#1e90ff"
+          compact={false}>
+          Sign Out
+        </Button>
+      </View>
+    );
+  }
 }
 
 export default SettingsScreen;

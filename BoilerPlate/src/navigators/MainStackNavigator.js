@@ -1,25 +1,19 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/Drawer/home';
+import LoadingScreen from '../screens/Drawer/loading';
+import SettingsScreen from '../screens/Drawer/settings';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import HomeScreen from '../screens/Drawer/home'
-import LoadingScreen from '../screens/Drawer/loading'
-import SettingsScreen from '../screens/Drawer/settings'
-
-
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
 export function MainStackNavigator() {
-
-
   return (
-    <Drawer.Navigator screenOptions={{
-      headerShown: false,
-      animationEnabled: false,
-    }}>
-      <Drawer.Screen name={'Home'} component={HomeScreen}/>
-      <Drawer.Screen name={'Loading'} component={LoadingScreen}/>
-      <Drawer.Screen name={'Settings'} component={SettingsScreen}/>
-    </Drawer.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Loading" component={LoadingScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
