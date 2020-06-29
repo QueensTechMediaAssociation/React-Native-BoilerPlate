@@ -44,4 +44,7 @@ export const styles = StyleSheet.create({
     width: 150,
     height: 293,
   },
+  loading: {
+    marginTop: 300,
+  },
 });
