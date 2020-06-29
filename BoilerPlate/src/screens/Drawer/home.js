@@ -16,10 +16,46 @@ class HomeScreen extends Component {
           <Text style={styles.pageTitle}>{'Home'}</Text>
           <Card style={styles.card}>
             <Card.Content>
-              <Title>Card title</Title>
+              <Title>Example</Title>
             </Card.Content>
             <Card.Cover
               source={{uri: 'https://picsum.photos/700'}}
+              style={(padding = 20)}
+            />
+          </Card>
+          <Card style={styles.card}>
+            <Card.Content>
+              <Title>Example</Title>
+            </Card.Content>
+            <Card.Cover
+              source={{uri: 'https://picsum.photos/600'}}
+              style={(padding = 20)}
+            />
+          </Card>
+          <Card style={styles.card}>
+            <Card.Content>
+              <Title>Example</Title>
+            </Card.Content>
+            <Card.Cover
+              source={{uri: 'https://picsum.photos/500'}}
+              style={(padding = 20)}
+            />
+          </Card>
+          <Card style={styles.card}>
+            <Card.Content>
+              <Title>Example</Title>
+            </Card.Content>
+            <Card.Cover
+              source={{uri: 'https://picsum.photos/400'}}
+              style={(padding = 20)}
+            />
+          </Card>
+          <Card style={styles.card}>
+            <Card.Content>
+              <Title>Example</Title>
+            </Card.Content>
+            <Card.Cover
+              source={{uri: 'https://picsum.photos/300'}}
               style={(padding = 20)}
             />
           </Card>
