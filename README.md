@@ -41,6 +41,8 @@
   ```sh
   react-native run-ios
   ```
+  - If you got a different error that looks like "XCode 10: Multiple Commands Produce ..." you'll need to navigate to <your_project_name>.xcworkspace
+  - Open Build Phases which is next to "Signing & Capabilities" and open "Copy Bundle Resources" delete everything that isn't "Images.xcassets", "LaunchScreen.xib" and "GoogleService-info.plist" and try re-running the application
 - Android
   ```sh
   react-native run-android
