@@ -7,6 +7,7 @@
     - [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack)
     - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
     - [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native)
+    - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) code formatter
 - Download [Git](https://git-scm.com/)
 - Download [NPM](https://www.npmjs.com/get-npm)
 
