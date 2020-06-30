@@ -30,6 +30,21 @@
   ```sh
   react-native init <your_project_name> --template https://github.com/QueensTechMediaAssociation/react-native-template-qtma
   ```
+## Run Your Mobile Application and watch it fail
+- Navigate to <your_project_name> and open app.json
+  - Change the "name" and "displayName" values to match the project name you just gave your application
+- Depending on which target OS you've configured your project for you'll run a different command
+- ios
+  - Open <your_project_name>/ios/<your_project_name>.xcworkspace
+  - Click on your project in the left pane, then click the first Target under TARGETS, navigate to Signing & Capabilities (next to General) and add an apple development team and a unique bundle identifier
+  - Now run your application with the following command and you should see an error "No Firebase App '[DEFAULT]' has been created - call firebase.initializeApp()"
+  ```sh
+  react-native run-ios
+  ```
+- Android
+  ```sh
+  react-native run-android
+
 
 ## Configure Your Application With A Firebase Project :fire:
 
@@ -40,16 +55,7 @@
   - Follow the [React Native Firebase Getting Started Guide](https://rnfirebase.io/) for your target OS to configure your project with Firebase. Everyone should have autolinking available to them so stop when you see "Manual Linking", you don't need to complete the miscellaneous section
     > **Note:** If you're developing on, macOS: I recommend setting up both android and ios (ios minimum) android: you can only setup android
 
-## Run Your Mobile Application
 
-- Depending on which target OS you've configured your project for you'll run a different command
-- ios
-  ```sh
-  react-native run-ios
-  ```
-- Android
-  ```sh
-  react-native run-android
   ```
 
 ## Help
